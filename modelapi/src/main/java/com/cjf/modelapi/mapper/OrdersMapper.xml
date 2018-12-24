@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjf.modelapi.mapper.OrdersMapper">
+    <resultMap id="BaseResultMap" type="com.cjf.modelapi.model.Orders">
+        <id column="oid" jdbcType="INTEGER" property="oid"/>
+        <result column="uid" jdbcType="INTEGER" property="uid"/>
+        <result column="uname" jdbcType="VARCHAR" property="uname"/>
+        <result column="gid" jdbcType="INTEGER" property="gid"/>
+        <result column="gname" jdbcType="VARCHAR" property="gname"/>
+        <result column="gnum" jdbcType="INTEGER" property="gnum"/>
+        <result column="totalmoney" jdbcType="DOUBLE" property="totalmoney"/>
+        <result column="oldmoney" jdbcType="DOUBLE" property="oldmoney"/>
+        <result column="discount" jdbcType="DOUBLE" property="discount"/>
+        <result column="newmoney" jdbcType="DOUBLE" property="newmoney"/>
+        <result column="ordertime" jdbcType="TIMESTAMP" property="ordertime"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    oid, uid, uname, gid, gname, gnum, totalmoney, oldmoney, discount, newmoney, ordertime, 
+    remarks
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+        where oid = #{oid,jdbcType=INTEGER}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from orders
+
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.cjf.modelapi.model.Orders">
+    insert into orders (oid, uid, uname, 
+      gid, gname, gnum, totalmoney, 
+      oldmoney, discount, newmoney, 
+      ordertime, remarks)
+    values (#{oid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, 
+      #{gid,jdbcType=INTEGER}, #{gname,jdbcType=VARCHAR}, #{gnum,jdbcType=INTEGER}, #{totalmoney,jdbcType=DOUBLE}, 
+      #{oldmoney,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{newmoney,jdbcType=DOUBLE}, 
+      #{ordertime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.cjf.modelapi.model.Orders">
+        insert into orders
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="oid != null">
+                oid,
+            </if>
+            <if test="uid != null">
+                uid,
+            </if>
+            <if test="uname != null">
+                uname,
+            </if>
+            <if test="gid != null">
+                gid,
+            </if>
+            <if test="gname != null">
+                gname,
+            </if>
+            <if test="gnum != null">
+                gnum,
+            </if>
+            <if test="totalmoney != null">
+                totalmoney,
+            </if>
+            <if test="oldmoney != null">
+                oldmoney,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="newmoney != null">
+                newmoney,
+            </if>
+            <if test="ordertime != null">
+                ordertime,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="oid != null">
+                #{oid,jdbcType=INTEGER},
+            </if>
+            <if test="uid != null">
+                #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="uname != null">
+                #{uname,jdbcType=VARCHAR},
+            </if>
+            <if test="gid != null">
+                #{gid,jdbcType=INTEGER},
+            </if>
+            <if test="gname != null">
+                #{gname,jdbcType=VARCHAR},
+            </if>
+            <if test="gnum != null">
+                #{gnum,jdbcType=INTEGER},
+            </if>
+            <if test="totalmoney != null">
+                #{totalmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="oldmoney != null">
+                #{oldmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=DOUBLE},
+            </if>
+            <if test="newmoney != null">
+                #{newmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="ordertime != null">
+                #{ordertime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.cjf.modelapi.model.Orders">
+        update orders
+        <set>
+            <if test="uid != null">
+                uid = #{uid,jdbcType=INTEGER},
+            </if>
+            <if test="uname != null">
+                uname = #{uname,jdbcType=VARCHAR},
+            </if>
+            <if test="gid != null">
+                gid = #{gid,jdbcType=INTEGER},
+            </if>
+            <if test="gname != null">
+                gname = #{gname,jdbcType=VARCHAR},
+            </if>
+            <if test="gnum != null">
+                gnum = #{gnum,jdbcType=INTEGER},
+            </if>
+            <if test="totalmoney != null">
+                totalmoney = #{totalmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="oldmoney != null">
+                oldmoney = #{oldmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=DOUBLE},
+            </if>
+            <if test="newmoney != null">
+                newmoney = #{newmoney,jdbcType=DOUBLE},
+            </if>
+            <if test="ordertime != null">
+                ordertime = #{ordertime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where oid = #{oid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.cjf.modelapi.model.Orders">
+    update orders
+    set uid = #{uid,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      gid = #{gid,jdbcType=INTEGER},
+      gname = #{gname,jdbcType=VARCHAR},
+      gnum = #{gnum,jdbcType=INTEGER},
+      totalmoney = #{totalmoney,jdbcType=DOUBLE},
+      oldmoney = #{oldmoney,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      newmoney = #{newmoney,jdbcType=DOUBLE},
+      ordertime = #{ordertime,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>
