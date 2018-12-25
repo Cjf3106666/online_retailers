@@ -1,6 +1,8 @@
 package com.cjf.modelapi.model;
 
-public class Goods {
+import java.io.Serializable;
+
+public class Goods implements Serializable {
     private Integer gid;
 
     private String goodsname;

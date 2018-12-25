@@ -22,13 +22,9 @@ public class OrderController {
     private OrderService orderService;
 
     @HystrixCommand
-    @RequestMapping(value = "/order/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/add", method = RequestMethod.POST)
     public int add(@RequestBody Orders order) {
-        try {
 
-        } catch (Exception e) {
-
-        }
         return orderService.addOrder(order);
     }
 

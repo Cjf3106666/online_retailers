@@ -12,6 +12,7 @@
         <module>take_order8002</module>
         <module>show_order</module>
         <module>show_order8004</module>
+        <module>e_shop</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

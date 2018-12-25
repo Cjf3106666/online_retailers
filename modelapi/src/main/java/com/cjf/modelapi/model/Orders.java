@@ -1,8 +1,9 @@
 package com.cjf.modelapi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Orders {
+public class Orders implements Serializable {
     private Integer oid;
 
     private Integer uid;

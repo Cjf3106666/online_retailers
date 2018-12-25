@@ -1,6 +1,8 @@
 package com.cjf.modelapi.model;
 
-public class Userinfo {
+import java.io.Serializable;
+
+public class Userinfo implements Serializable {
     private Integer userid;
 
     private String username;
