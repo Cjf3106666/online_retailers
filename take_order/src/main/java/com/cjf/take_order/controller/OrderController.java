@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @Descpription
  * @Author CJF
@@ -20,7 +22,7 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-
+    volatile  static AtomicInteger atomicInteger=new AtomicInteger(0);
     @HystrixCommand
     @RequestMapping(value = "/order/add", method = RequestMethod.POST)
     public int add(@RequestBody Orders order) {

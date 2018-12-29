@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableHystrix
+//@EnableHystrix
 public class ShowOrderApplication {
 
     public static void main(String[] args) {

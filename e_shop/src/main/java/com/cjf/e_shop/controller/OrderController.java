@@ -18,6 +18,13 @@ public class OrderController {
     //  private static final String Rest_Url_Prefix ="http://localhost:8001";
     private static final String Rest_Url_Prefix_take = "http://TAKE-ORDERS";
     private static final String Rest_Url_Prefix_show = "http://SHOW-ORDERS";
+    static OrderController controller=new OrderController();
+
+    private OrderController() {
+    }
+    static public OrderController getController(){
+        return controller;
+    }
     @Autowired
     private RestTemplate restTemplate;
     @Autowired
@@ -43,13 +50,10 @@ public class OrderController {
         return restTemplate.getForObject(Rest_Url_Prefix_show+"/order/getAll",List.class);
     }
 */
+
     @RequestMapping(value = "/consumer/order/add")
-    public int add(HttpServletRequest request, @RequestParam("uname") String uname,@RequestParam("gname") String gname) {
-      //  String uname = (String) request.getAttribute("uname");
-      //  String gname = (String) request.getAttribute("gname");
-        Orders orders=new Orders();
-        orders.setGname(gname);
-        orders.setUname(uname);
+    public int add(Orders orders) {
+
         return takeOrdersService.addOrder(orders);
     }
 

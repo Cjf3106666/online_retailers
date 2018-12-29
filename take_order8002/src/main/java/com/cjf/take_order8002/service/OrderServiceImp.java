@@ -4,6 +4,8 @@ import com.cjf.modelapi.model.Orders;
 import com.cjf.take_order8002.service.*;
 import com.cjf.take_order8002.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,8 +19,16 @@ public class OrderServiceImp implements OrderService {
     @Autowired
     private OrdersMapper mapper;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Override
     public int addOrder(Orders orders) {
-        return mapper.insertSelective(orders);
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        int result = mapper.insertSelective(orders);
+        if (result > 0) {
+            redisTemplate.delete("AllOrders");
+        }
+        return result;
     }
 }
