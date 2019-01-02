@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableHystrix
+@EnableHystrix
 public class TakeOrderApplication {
 
     public static void main(String[] args) {

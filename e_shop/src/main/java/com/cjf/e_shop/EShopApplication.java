@@ -1,6 +1,7 @@
 package com.cjf.e_shop;
 
 import com.MySelfRuler.MySelfRule;
+import com.netflix.loadbalancer.RetryRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

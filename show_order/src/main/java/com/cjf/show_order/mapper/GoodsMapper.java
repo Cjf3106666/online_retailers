@@ -3,6 +3,8 @@ package com.cjf.show_order.mapper;
 import com.cjf.modelapi.model.Goods;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface GoodsMapper {
 
@@ -20,4 +22,6 @@ public interface GoodsMapper {
     int updateByPrimaryKeySelective(Goods record);
 
     int updateByPrimaryKey(Goods record);
+
+    List<Goods> selectAll();
 }

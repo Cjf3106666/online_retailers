@@ -1,5 +1,6 @@
 package com.cjf.e_shop.controller;
 
+import com.cjf.modelapi.model.Goods;
 import com.cjf.modelapi.model.Orders;
 import com.cjf.modelapi.service.ShowOrdersService;
 import com.cjf.modelapi.service.TakeOrdersService;
@@ -53,7 +54,6 @@ public class OrderController {
 
     @RequestMapping(value = "/consumer/order/add")
     public int add(Orders orders) {
-
         return takeOrdersService.addOrder(orders);
     }
 
@@ -61,4 +61,10 @@ public class OrderController {
     public List<Orders> getAll() {
         return showOrdersService.showAllOrders();
     }
+
+    @RequestMapping(value = "/consumer/goods/list")
+    public List<Goods> getAllGoods() {
+        return showOrdersService.showAllGoods();
+    }
+
 }

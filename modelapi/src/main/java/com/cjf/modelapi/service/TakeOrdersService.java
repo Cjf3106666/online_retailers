@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author CJF
  * @Date 2018/12/24 11:38
  **/
-@FeignClient(value = "TAKE-ORDERS")
+@FeignClient(value = "TAKE-ORDERS",fallbackFactory = TakeOrdersFallbackFactory.class)
 public interface TakeOrdersService {
     @RequestMapping(value = "/order/add")
     public int addOrder(Orders orders);
