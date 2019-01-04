@@ -5,6 +5,8 @@ import com.cjf.modelapi.model.Orders;
 import com.cjf.modelapi.service.ShowOrdersService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Controller;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ import java.util.List;
  **/
 @Controller
 public class QueueController {
+
     @Autowired
     private AmqpTemplate rabbitTemplate;
     @Autowired
@@ -31,6 +33,7 @@ public class QueueController {
     private RedisTemplate redisTemplate;
     @Autowired
     private ShowOrdersService showOrdersService;
+
 
     @Transactional(rollbackFor = Exception.class)
     @RequestMapping("/takeOrder/{id}")
