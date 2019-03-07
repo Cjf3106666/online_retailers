@@ -16,8 +16,8 @@ public class RabbitConfig {
     public Queue helloQueue(){
 
         Queue queue= new Queue("hello",true);
-
         return queue;
+
     }
     @Bean
     public Exchange hellochange(){

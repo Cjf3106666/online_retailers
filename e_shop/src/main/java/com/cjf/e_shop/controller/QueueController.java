@@ -5,7 +5,6 @@ import com.cjf.modelapi.model.Orders;
 import com.cjf.modelapi.service.ShowOrdersService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -68,12 +67,12 @@ public class QueueController {
                 redisTemplate.opsForValue().set(key, "" + Stock);
             }
 
-
             if (Stock > (s.getGnum() * 2)) {
                 redisTemplate.opsForValue().set(key, "" + (Stock - s.getGnum() * 2));
             } else {
                 return "下单失败，库存不足!";
             }
+
             rabbitTemplate.convertAndSend("TopicExchange", "topic.hello", s);
             return "下单成功！";
         } catch (Exception e) {
